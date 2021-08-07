@@ -1,23 +1,28 @@
 <template>
   <div class="WeatherApp">
     <div class="header"> {{msg}}</div>
-    <div>
-      <el-table
-          :data="tableData"
-          style="width: 100%">
-        <el-table-column
-            prop="date"
-            label="Date"
-            width="180">
-        </el-table-column>
-        <el-table-column
-            prop="weather"
-            label="Name"
-            width="180">
-        </el-table-column>
-      </el-table>
-    </div>
-    <div></div>
+    <el-select v-model="value" placeholder="Select">
+      <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
+    <el-table
+        :data="tableData"
+        style="width: 100%">
+      <el-table-column
+          prop="date"
+          label="Date"
+          width="180">
+      </el-table-column>
+      <el-table-column
+          prop="weather"
+          label="Name"
+          width="180">
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -50,7 +55,24 @@ export default {
       }, {
           date: 'Sunday',
           weather: 'Blizzard',
-    }]
+    }],
+      options: [{
+        value: 'Option1',
+        label: 'Москва'
+      }, {
+        value: 'Option2',
+        label: 'Санкт-Петербург'
+      }, {
+        value: 'Option3',
+        label: 'Вашингтон'
+      }, {
+        value: 'Option4',
+        label: 'Пекин'
+      }, {
+        value: 'Option5',
+        label: 'Токио'
+      }],
+      value: 'Выберите ваш город'
     }
 
 }
