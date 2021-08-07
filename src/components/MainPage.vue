@@ -123,6 +123,8 @@ export default {
   }
   &__button {
     box-shadow: 0 0 5px  #1dfae0;
+    background-color: #2c1147;
+    color: white;
     margin-left: 5px;
   }
   &__table {
