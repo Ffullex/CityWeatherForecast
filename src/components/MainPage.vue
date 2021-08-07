@@ -11,13 +11,9 @@
             width="180">
         </el-table-column>
         <el-table-column
-            prop="name"
+            prop="weather"
             label="Name"
             width="180">
-        </el-table-column>
-        <el-table-column
-            prop="address"
-            label="Address">
         </el-table-column>
       </el-table>
     </div>
@@ -34,22 +30,27 @@ export default {
     return {
       msg: 'Weather',
       tableData: [{
-        date: '2016-05-03',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
+        date: 'Monday',
+        weather: 'Cold',
       }, {
-        date: '2016-05-02',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
+        date: 'Tuesday',
+        weather: 'Dry',
       }, {
-        date: '2016-05-04',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
+        date: 'Wednesday',
+        weather: 'Hot',
       }, {
-        date: '2016-05-01',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
-      }]
+        date: 'Thursday',
+        weather: 'Winter storm',
+      }, {
+          date: 'Friday',
+          weather: 'Hail',
+      }, {
+          date: 'Saturday',
+          weather: 'Thunderstorm',
+      }, {
+          date: 'Sunday',
+          weather: 'Blizzard',
+    }]
     }
 
 }
