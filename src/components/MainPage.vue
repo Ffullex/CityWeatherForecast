@@ -8,19 +8,22 @@
       <el-select
           class="weather__selector"
           v-model="value"
-          placeholder="Select">
+          placeholder="Select"
+          style="color: white;">
       <el-option
           v-for="item in options"
           :key="item.value"
           :label="item.label"
-          :value="item.value">
+          :value="item.value"
+          style="color: white;">
       </el-option>
     </el-select>
       <el-button class="weather__button" type="primary" plain>Искать</el-button>
     </div>
     <div class="weather__table">
      <el-table
-        :data="tableData">
+        :data="tableData"
+        style="color: white;">
       <el-table-column
           prop="date"
           label="Дни недели"
@@ -131,7 +134,7 @@ export default {
     background-color: aquamarine;
     box-shadow: 0 0 5px  #1dfae0;
     margin: 20px;
-    width: 720px
+    width: 720px;
   }
   &__map {
     height: 500px;
