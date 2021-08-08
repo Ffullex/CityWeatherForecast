@@ -23,17 +23,29 @@
     <div class="weather__table">
      <el-table
         :data="tableData"
+        height="400px"
         style="color: white;">
       <el-table-column
-          prop="date"
-          label="Дни недели"
-          width="180px">
+        prop="date"
+        label="Дата"
+        width="180px">
       </el-table-column>
       <el-table-column
-          prop="weather"
-          label="Температура"
-          width="540px">
+        prop="weather"
+        label="Температура"
+        width="180px">
       </el-table-column>
+       <el-table-column
+         prop="cloudy"
+         label="Облачность"
+         width="180px">
+       </el-table-column>
+      <el-table-column
+       prop="wind"
+       label="Скорость ветра"
+       width="180px">
+      </el-table-column>
+
     </el-table>
      </div>
     </div>
@@ -54,43 +66,56 @@ export default {
     return {
       msg: 'Weather',
       tableData: [{
-        date: 'Monday',
-        weather: 'Cold',
+        date: 'дд-мм-гггг',
+        weather: '19С',
+        cloudy: 'ясно',
+        wind: '3 м/c',
       }, {
-        date: 'Tuesday',
-        weather: 'Dry',
-      }, {
-        date: 'Wednesday',
-        weather: 'Hot',
-      }, {
-        date: 'Thursday',
-        weather: 'Winter storm',
-      }, {
-          date: 'Friday',
-          weather: 'Hail',
-      }, {
-          date: 'Saturday',
-          weather: 'Thunderstorm',
-      }, {
-          date: 'Sunday',
-          weather: 'Blizzard',
-    }],
-      options: [{
-        value: 'Option1',
-        label: 'Москва'
-      }, {
-        value: 'Option2',
-        label: 'Санкт-Петербург'
-      }, {
-        value: 'Option3',
-        label: 'Вашингтон'
-      }, {
-        value: 'Option4',
-        label: 'Пекин'
-      }, {
-        value: 'Option5',
-        label: 'Токио'
-      }],
+        date: 'дд-мм-гггг',
+        weather: '19С',
+        cloudy: 'ясно',
+        wind: '3 м/c',
+      },{
+        date: 'дд-мм-гггг',
+        weather: '19С',
+        cloudy: 'ясно',
+        wind: '3 м/c',
+      },{
+        date: 'дд-мм-гггг',
+        weather: '19С',
+        cloudy: 'ясно',
+        wind: '3 м/c',
+      },{
+        date: 'дд-мм-гггг',
+        weather: '19С',
+        cloudy: 'ясно',
+        wind: '3 м/c',
+      },{
+        date: 'дд-мм-гггг',
+        weather: '19С',
+        cloudy: 'ясно',
+        wind: '3 м/c',
+      },{
+        date: 'дд-мм-гггг',
+        weather: '19С',
+        cloudy: 'ясно',
+        wind: '3 м/c',
+      },{
+        date: 'дд-мм-гггг',
+        weather: '19С',
+        cloudy: 'ясно',
+        wind: '3 м/c',
+      },{
+        date: 'дд-мм-гггг',
+        weather: '19С',
+        cloudy: 'ясно',
+        wind: '3 м/c',
+      },{
+        date: 'дд-мм-гггг',
+        weather: '19С',
+        cloudy: 'ясно',
+        wind: '3 м/c',
+      },],
       value: 'Выберите ваш город'
     }
 
@@ -140,7 +165,7 @@ export default {
     width: 500px;
     box-shadow: 0 0 5px  #1dfae0;
     align-items: flex-end;
-    margin-top: 103px;
+    margin-top: 120px;
     margin-right: 20px;
   }
 }
