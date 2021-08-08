@@ -116,6 +116,22 @@ export default {
         cloudy: 'ясно',
         wind: '3 м/c',
       },],
+      options: [{
+        value: 'Option1',
+        label: 'Москва'
+      }, {
+        value: 'Option2',
+        label: 'Вашингтон'
+      }, {
+        value: 'Option3',
+        label: 'Санкт-Петербург'
+      }, {
+        value: 'Option4',
+        label: 'Вильнюс'
+      }, {
+        value: 'Option5',
+        label: 'Токио'
+      }],
       value: 'Выберите ваш город'
     }
 
