@@ -131,7 +131,6 @@ export default {
     margin-left: 5px;
   }
   &__table {
-    background-color: aquamarine;
     box-shadow: 0 0 5px  #1dfae0;
     margin: 20px;
     width: 720px;
