@@ -47,7 +47,7 @@
      </div>
     <div style="color:white">{{ info }}</div>
       <div style="color:white">
-        <h>Пример</h>
+        <h3>Пример</h3>
         <div v-for="currency in info" :key="currency.list" class="currency" >
           <span> {{ currency.main }}</span>
         </div>
