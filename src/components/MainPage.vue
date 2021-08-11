@@ -45,6 +45,8 @@
       </el-table>
     </div>
     <div style="color:white"> ({{ getTemp }}</div>
+      <div>......................</div>
+      <div style="color:white"> ({{ getCities }}</div>
     <div v-if="false">
     { "data":
       { "message": "accurate", "cod": "200", "count": 4,
@@ -205,10 +207,17 @@ export default {
     getTemp() {
       console.log(this.$store.getters['tableData/speed'])
       return this.$store.getters['tableData/speed']
+    },
+    getCities() {
+      console.log(this.$store.getters['tableData/cities'])
+      return this.$store.getters['tableData/cities']
     }
   },
   mounted() {
     this.$store.dispatch('tableData/getSpeed').then(() => {
+      this.loading = false
+    })
+    this.$store.dispatch('tableData/getCities').then(() => {
       this.loading = false
     })
   },

@@ -7,6 +7,7 @@ const state = {
     temp: null,
     clouds: null,
     speed: null,
+    cities: null,
 }
 
 const mutations = {
@@ -22,6 +23,9 @@ const mutations = {
     SET_SPEED: (state, speed) => {
         state.speed = speed
     },
+    SET_CITIES: (state, cities) => {
+        state.cities = cities
+    }
 }
 
 const getters = {
@@ -29,6 +33,7 @@ const getters = {
     temp: (state) => state.temp,
     clouds: (state) => state.clouds,
     speed: (state) => state.speed,
+    cities: (state) => state.cities,
 }
 
 const actions = {
@@ -77,6 +82,18 @@ const actions = {
             getData()
                 .then((response) => {
                     commit('SET_SPEED', response)
+                    resolve()
+                })
+                .catch((error) => {
+                    reject(error)
+                })
+        })
+    },
+    getCities({ commit }) {
+        return new Promise((resolve, reject) => {
+            getData()
+                .then((response) => {
+                    commit('SET_CITIES', response)
                     resolve()
                 })
                 .catch((error) => {
