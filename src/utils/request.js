@@ -2,7 +2,7 @@ import axios from 'axios'
 import Message from 'element-ui/packages/message/src/main'
 
 const service = axios.create({
-    baseURL: 'http://api.openweathermap.org/data/2.5/find?q=Moscow&units=metric&cnt=10&appid=7ddbbac4414598a0582efd0c12096e75&lang=ru',
+    baseURL: 'http://api.openweathermap.org/data/2.5/',
     timeout: 60000,
 })
 

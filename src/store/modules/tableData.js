@@ -54,7 +54,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             getData()
                 .then((response) => {
-                    commit('SET_TEMP', response.data.list[0].main.temp)
+                    commit('SET_TEMP', response.data)
                     resolve()
                 })
                 .catch((error) => {
@@ -67,7 +67,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             getData()
                 .then((response) => {
-                    commit('SET_CLOUDS', response)
+                    commit('SET_CLOUDS', response.data.list.temp)
                     console.log('ok')
                     resolve()
                 })
