@@ -10,17 +10,17 @@
           v-model="value"
           placeholder="Select">
       <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
+          v-for="item in getDataTable"
+          :key="item.id"
+          :label="item.dt"
+          :value="item.dt">
       </el-option>
     </el-select>
       <el-button class="weather__button" type="primary" plain>Искать</el-button>
     </div>
     <div class="weather__table">
       <el-table
-        :data="weather"
+        :data="getDataTable"
         height="400px">
       <el-table-column
         prop="dt"
@@ -28,23 +28,23 @@
         width="180px">
       </el-table-column>
       <el-table-column
-        prop="temp"
+        prop="main.temp"
         label="Температура"
         width="180px">
       </el-table-column>
        <el-table-column
-         prop="clouds"
+         prop="clouds.all"
          label="Облачность"
          width="180px">
        </el-table-column>
       <el-table-column
-       prop="speed"
+       prop="wind.speed"
        label="Скорость ветра"
        width="180px">
       </el-table-column>
       </el-table>
     </div>
-    <div style="color:white"> ({{ getTemp }}</div>
+    <div style="color:white"> ({{ getDataTable }}</div>
     <div style="color:white">......................</div>
     <div style="color:white">......................</div>
     <div style="color:white"> {{ getCities }} </div>
@@ -65,23 +65,6 @@ export default {
       msg: 'Weather',
       value: 'Выберите ваш город',
       loading: true,
-      city: null,
-      weather: [{
-        dt: 'Дата',
-        temp: '19С',
-        clouds: 'ясно',
-        speed: '3 м/c',
-      }, {
-        dt: 'дд-мм-гггг',
-        temp: '19С',
-        clouds: 'ясно',
-        speed: '3 м/c',
-      },{
-        dt: 'дд-мм-гггг',
-        temp: '19С',
-        clouds: 'ясно',
-        speed: '3 м/c',
-      },],
       options: [{
         value: 'Option3',
         label: 'Санкт-Петербург'
@@ -95,9 +78,9 @@ export default {
     }
   },
   computed: {
-    getTemp() {
-      console.log(this.$store.getters['tableData/clouds'])
-      return this.$store.getters['tableData/clouds']
+    getDataTable() {
+      console.log(this.$store.getters['tableData/list'])
+      return this.$store.getters['tableData/list']
     },
     getCities() {
       console.log(this.$store.getters['tableData/cities'])
@@ -105,7 +88,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('tableData/getClouds').then(() => {
+    this.$store.dispatch('tableData/getData').then(() => {
       this.loading = false
     })
     this.$store.dispatch('tableData/getCities').then(() => {
