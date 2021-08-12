@@ -1,7 +1,7 @@
 # weather-page
-This application shows the weather in the selected city. Implemented with Vue 2, VueCLI, VueX, axios, openWeather api & npm.
+This application shows the weather in the selected city. Implemented with Vue 2, VueCLI, VueX, axios, openWeather api, node.js, express & npm.
 
-Данное приложение показывает погоду в выбранном городе. Реализовано с помощью Vue  2, VueCLI , VueX, axios,api openWeather & npm.
+Данное приложение показывает погоду в выбранном городе. Реализовано с помощью Vue  2, VueCLI , VueX, axios,api openWeather, node.js, express  & npm.
 
 To run, you need to get the code through Git clone, or download the archive and unzip it. Then open the project folder through the IDE (I recommend WebStorm). In the console (teminal), you should write the commands:
 1) npm install - to install all modules.
