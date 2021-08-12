@@ -9,7 +9,7 @@ export function getData() {
 }
 export function getCities() {
     return request({
-        url: 'forecast?q=London,uk&units=metric&cnt=40&appid=63623439096e87e393efaaa735fcb9cd&lang=ru',
+        url: 'http://localhost:3000/src/assets/Cities/city.list.json',
         method: 'get',
     })
 }
