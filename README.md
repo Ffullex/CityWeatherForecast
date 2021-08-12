@@ -1,5 +1,6 @@
 # weather-page
 This application shows the weather in the selected city. Implemented with Vue 2, VueCLI, VueX, axios, openWeather api & npm.
+
 Данное приложение показывает погоду в выбранном городе. Реализовано с помощью Vue  2, VueCLI , VueX, axios,api openWeather & npm.
 
 To run, you need to get the code through Git clone, or download the archive and unzip it. Then open the project folder through the IDE (I recommend WebStorm). In the console (teminal), you should write the commands:
