@@ -5,17 +5,17 @@
       <h1 class="weather__header-text">{{msg}}</h1>
     </div>
     <div class="weather__search">
-      <el-select
-          class="weather__selector"
-          v-model="value"
-          placeholder="Select">
-      <el-option
-          v-for="item in getDataTable"
-          :key="item.id"
-          :label="item.dt"
-          :value="item.dt">
-      </el-option>
-    </el-select>
+<!--      <el-select-->
+<!--          class="weather__selector"-->
+<!--          v-model="value"-->
+<!--          placeholder="Select">-->
+<!--      <el-option-->
+<!--          v-for="item in getCities"-->
+<!--          :key="item.city"-->
+<!--          :label="item.name"-->
+<!--          :value="item.name">-->
+<!--      </el-option>-->
+<!--    </el-select>-->
       <el-button class="weather__button" type="primary" plain>Искать</el-button>
     </div>
     <div class="weather__table">
@@ -23,29 +23,28 @@
         :data="getDataTable"
         height="400px">
       <el-table-column
-        prop="dt"
+        prop="dt_txt"
         label="Дата"
         width="180px">
       </el-table-column>
       <el-table-column
         prop="main.temp"
-        label="Температура"
-        width="180px">
+        label="Температура (С°)"
+        width="150px">
       </el-table-column>
        <el-table-column
-         prop="clouds.all"
+         prop="weather[0].description"
          label="Облачность"
-         width="180px">
+         width="210px">
        </el-table-column>
       <el-table-column
        prop="wind.speed"
-       label="Скорость ветра"
+       label="Скорость ветра (м/c)"
        width="180px">
       </el-table-column>
       </el-table>
     </div>
     <div style="color:white"> ({{ getDataTable }}</div>
-    <div style="color:white">......................</div>
     <div style="color:white">......................</div>
     <div style="color:white"> {{ getCities }} </div>
     </div>
@@ -95,7 +94,20 @@ export default {
       this.loading = false
     })
   },
-
+  methods: {
+    changeData: function (timeNum) {
+      let day = String(timeNum.getData())
+      if (timeNum < 10) {
+        day = '0' + day
+      }
+      let month = String(timeNum.getMonth())
+      if (timeNum < 10) {
+        month = '0' + month
+      }
+      let year = String(timeNum.getFullYear())
+      return day + '-' + month + '-' + year
+    }
+  }
 }
 </script>
 
