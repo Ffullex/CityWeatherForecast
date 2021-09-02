@@ -1,32 +1,39 @@
 import {
-    getCities,
+    chooseCity,
     getData,
 } from '@/api/weather'
+import { setToken } from "@/utils/select";
 
 const state = {
     list: null,
-    cities: null,
+    city: null,
+    // cities: null,
 }
 
 const mutations = {
     SET_LIST: (state, list) => {
         state.list = list
     },
-    SET_CITIES: (state, cities) => {
-        state.cities = cities
-    }
+    SET_CITY: (store, city) => {
+        store.city = city
+    },
+    // SET_CITIES: (state, cities) => {
+    //     state.cities = cities
+    // }
 }
 
 const getters = {
     list: (state) => state.list,
-    cities: (state) => state.cities,
+    city: (store) => store.city,
+    // cities: (state) => state.cities,
 }
 
 const actions = {
 
-    getData({ commit }) {
+    getData({ commit }, city) {
+        console.log(city)
         return new Promise((resolve, reject) => {
-            getData()
+            getData(city)
                 .then((response) => {
                     commit('SET_LIST', response.list)
                     resolve()
@@ -36,12 +43,12 @@ const actions = {
                 })
         })
     },
-
-    getCities({ commit }) {
+    getCity( data ) {
+        const { value } = data
         return new Promise((resolve, reject) => {
-            getCities()
+            chooseCity({ value: value })
                 .then((response) => {
-                    commit('SET_CITIES', response)
+                    setToken(response.token)
                     resolve()
                 })
                 .catch((error) => {
@@ -49,6 +56,18 @@ const actions = {
                 })
         })
     },
+    // getCities({ commit }) {
+    //     return new Promise((resolve, reject) => {
+    //         getCities()
+    //             .then((response) => {
+    //                 commit('SET_CITIES', response)
+    //                 resolve()
+    //             })
+    //             .catch((error) => {
+    //                 reject(error)
+    //             })
+    //     })
+    // },
 }
 
 export default {

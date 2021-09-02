@@ -10,13 +10,13 @@
     v-model="value"
     placeholder="Select">
 <el-option
-    v-for="item in getCities"
-    :key="item.city"
+    v-for="item in option"
+    :key="item.id"
     :label="item.name"
     :value="item.name">
 </el-option>
 </el-select>
-<el-button class="weather__button" type="primary" plain>Искать</el-button>
+<el-button class="weather__button" type="primary" plain @click="onSubmit()">Искать</el-button>
 </div>
     <div  class="weather__table">
   <el-table
@@ -45,9 +45,6 @@
   </el-table-column>
   </el-table>
 </div>
-    <div style="color:white"> {{ getDataTable }}</div>
-    <div style="color:white">......................</div>
-    <div style="color:white"> {{ getCities }} </div>
     </div>
     <div class="weather__map" v-loading="this.loading">
         <iframe height="500px" width="500px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2297.267837347828!2d83.05014391544931!3d54.845545669061586!2m3!1f0!2f0!3f0!3m!1i1024!2i768!4f13.1!3m3!1m2!1s0x42dfc49ea6083ab9%3A0x4cd4ef286908078d!2z0KDRg9GB0YHQutCw0Y8g0YPQuy4sIDM1LCDQndC-0LLQvtGB0LjQsdC40YDRgdC6LCDQndC-0LLQvtGB0LjQsdC40YDRgdC60LDRjyDQvtCx0LsuLCDQoNC-0YHRgdC40Y8sIDYzMDA1OA!5e0!3m2!1sru!2sus!4v1611852565792!5m2!1sru!2sus"
@@ -64,18 +61,30 @@ export default {
   data() {
     return {
       msg: 'Weather',
-      value: 'Выберите ваш город',
+      value: 'London',
       loading: true,
-      options: [{
-        value: 'Option3',
-        label: 'Санкт-Петербург'
-      }, {
-        value: 'Option4',
-        label: 'Вильнюс'
-      }, {
-        value: 'Option5',
-        label: 'Токио'
-      }],
+      option: [
+        {
+          id: 1,
+          name: 'London',
+        },
+        {
+          id: 2,
+          name: 'Moscow',
+        },
+        {
+          id: 3,
+          name: 'Karangtalun',
+        },
+        {
+          id: 4,
+          name: 'Aguada de Cima',
+        },
+        {
+          id: 5,
+          name: 'Giesensdorf',
+        }
+      ]
     }
   },
   computed: {
@@ -83,19 +92,23 @@ export default {
       console.log(this.$store.getters['tableData/list'])
       return this.$store.getters['tableData/list']
     },
-    getCities() {
-      console.log(this.$store.getters['tableData/cities'])
-      console.log(this.loading)
-      return this.$store.getters['tableData/cities']
-    }
+    // getCities() {
+    //   console.log(this.$store.getters['tableData/cities'])
+    //   console.log(this.loading)
+    //   return this.$store.getters['tableData/cities']
+    // },
+    // getCity () {
+    //   console.log (require('../assets/city.list.json'))
+    //   return require('../assets/city.list.json')
+    // }
   },
   mounted() {
     this.$store.dispatch('tableData/getData').then(() => {
       this.loading = false
     })
-    this.$store.dispatch('tableData/getCities').then(() => {
-      this.loading = false
-    })
+    // this.$store.dispatch('tableData/getCities').then(() => {
+    //   this.loading = false
+    // })
   },
   methods: {
     changeData: function (timeNum) {
@@ -109,7 +122,14 @@ export default {
       }
       let year = String(timeNum.getFullYear())
       return day + '-' + month + '-' + year
-    }
+    },
+    onSubmit() {
+      console.log('Заходит')
+      this.$store.dispatch('tableData/getData', this.value).then(() => {
+        console.log('12413414')
+      })
+    },
+
   }
 }
 </script>
