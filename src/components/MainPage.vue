@@ -74,7 +74,7 @@ export default {
         },
         {
           id: 3,
-          name: 'Karangtalun',
+          name: 'Taglag',
         },
         {
           id: 4,
@@ -89,26 +89,13 @@ export default {
   },
   computed: {
     getDataTable() {
-      console.log(this.$store.getters['tableData/list'])
       return this.$store.getters['tableData/list']
     },
-    // getCities() {
-    //   console.log(this.$store.getters['tableData/cities'])
-    //   console.log(this.loading)
-    //   return this.$store.getters['tableData/cities']
-    // },
-    // getCity () {
-    //   console.log (require('../assets/city.list.json'))
-    //   return require('../assets/city.list.json')
-    // }
   },
   mounted() {
     this.$store.dispatch('tableData/getData').then(() => {
       this.loading = false
     })
-    // this.$store.dispatch('tableData/getCities').then(() => {
-    //   this.loading = false
-    // })
   },
   methods: {
     changeData: function (timeNum) {
@@ -125,11 +112,12 @@ export default {
     },
     onSubmit() {
       console.log('Заходит')
+      this.loading = true
       this.$store.dispatch('tableData/getData', this.value).then(() => {
         console.log('12413414')
+        this.loading = false
       })
     },
-
   }
 }
 </script>
