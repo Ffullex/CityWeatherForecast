@@ -1,31 +1,25 @@
 import {
-    chooseCity,
+    getCities,
     getData,
 } from '@/api/weather'
-import { setToken } from "@/utils/select";
 
 const state = {
     list: null,
-    city: null,
-    // cities: null,
+    cities: null,
 }
 
 const mutations = {
     SET_LIST: (state, list) => {
         state.list = list
     },
-    SET_CITY: (store, city) => {
-        store.city = city
-    },
-    // SET_CITIES: (state, cities) => {
-    //     state.cities = cities
-    // }
+    SET_CITIES: (state, cities) => {
+        state.cities = cities
+    }
 }
 
 const getters = {
     list: (state) => state.list,
-    city: (store) => store.city,
-    // cities: (state) => state.cities,
+    cities: (state) => state.cities,
 }
 
 const actions = {
@@ -43,12 +37,12 @@ const actions = {
                 })
         })
     },
-    getCity( data ) {
-        const { value } = data
+    getCities({ commit }, query) {
+        console.log(query)
         return new Promise((resolve, reject) => {
-            chooseCity({ value: value })
+            getCities(query)
                 .then((response) => {
-                    setToken(response.token)
+                    commit('SET_LIST', response)
                     resolve()
                 })
                 .catch((error) => {
@@ -56,18 +50,6 @@ const actions = {
                 })
         })
     },
-    // getCities({ commit }) {
-    //     return new Promise((resolve, reject) => {
-    //         getCities()
-    //             .then((response) => {
-    //                 commit('SET_CITIES', response)
-    //                 resolve()
-    //             })
-    //             .catch((error) => {
-    //                 reject(error)
-    //             })
-    //     })
-    // },
 }
 
 export default {

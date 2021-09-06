@@ -7,15 +7,9 @@ export function getData(city) {
     })
 }
 
-export function chooseCity(data) {
+export function getCities(query) {
     return request({
-        method: 'post',
-        data,
+        url: `http://localhost:3000/cities?query=${query}`,
+        method: 'get',
     })
 }
-// export function getCities() {
-//     return request({
-//         url: `forecast?q=${ 'london' },uk&units=metric&cnt=40&appid=63623439096e87e393efaaa735fcb9cd&lang=r`,
-//         method: 'get',
-//     })
-// }

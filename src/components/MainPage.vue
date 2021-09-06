@@ -7,8 +7,12 @@
     <div  class="weather__search">
 <el-select
     class="weather__selector"
+    filterable
+    remote
     v-model="value"
-    placeholder="Select">
+    placeholder="Select"
+    :remote-method="handleInput"
+>
 <el-option
     v-for="item in option"
     :key="item.id"
@@ -51,6 +55,7 @@
               style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
         </iframe>
     </div>
+    {{ value }}
   </div>
 
 </template>
@@ -61,7 +66,7 @@ export default {
   data() {
     return {
       msg: 'Weather',
-      value: 'London',
+      value: '',
       loading: true,
       option: [
         {
@@ -91,12 +96,15 @@ export default {
     getDataTable() {
       return this.$store.getters['tableData/list']
     },
+    getDataCities() {
+      return this.$store.getters['tableData/cities']
+    }
   },
-  mounted() {
-    this.$store.dispatch('tableData/getData').then(() => {
-      this.loading = false
-    })
-  },
+  // mounted() {
+  //   this.$store.dispatch('tableData/getData').then(() => {
+  //     this.loading = false
+  //   })
+  // },
   methods: {
     changeData: function (timeNum) {
       let day = String(timeNum.getData())
@@ -110,14 +118,22 @@ export default {
       let year = String(timeNum.getFullYear())
       return day + '-' + month + '-' + year
     },
-    onSubmit() {
+    onSubmit(query) {
       console.log('Заходит')
       this.loading = true
       this.$store.dispatch('tableData/getData', this.value).then(() => {
         console.log('12413414')
         this.loading = false
       })
+      this.$store.dispatch('tableData/getCities', query).then(() => {
+        console.log(query)
+        this.loading = false
+      })
     },
+
+    handleInput: function (query) {
+      return query
+    }
   }
 }
 </script>
