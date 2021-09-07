@@ -38,11 +38,11 @@ const actions = {
         })
     },
     getCities({ commit }, query) {
-        console.log(query)
         return new Promise((resolve, reject) => {
             getCities(query)
                 .then((response) => {
-                    commit('SET_LIST', response)
+                    console.log(1, response)
+                    commit('SET_CITIES', response)
                     resolve()
                 })
                 .catch((error) => {

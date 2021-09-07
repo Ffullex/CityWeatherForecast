@@ -14,10 +14,10 @@
     :remote-method="handleInput"
 >
 <el-option
-    v-for="item in option"
-    :key="item.id"
-    :label="item.name"
-    :value="item.name">
+    v-for="(item, index) of getDataCities"
+    :key="index"
+    :label="item"
+    :value="item">
 </el-option>
 </el-select>
 <el-button class="weather__button" type="primary" plain @click="onSubmit()">Искать</el-button>
@@ -68,43 +68,23 @@ export default {
       msg: 'Weather',
       value: '',
       loading: true,
-      option: [
-        {
-          id: 1,
-          name: 'London',
-        },
-        {
-          id: 2,
-          name: 'Moscow',
-        },
-        {
-          id: 3,
-          name: 'Taglag',
-        },
-        {
-          id: 4,
-          name: 'Aguada de Cima',
-        },
-        {
-          id: 5,
-          name: 'Giesensdorf',
-        }
-      ]
     }
   },
   computed: {
     getDataTable() {
+      console.log(4, this.$store.getters['tableData/list']);
       return this.$store.getters['tableData/list']
     },
     getDataCities() {
+      console.log(3, this.$store.getters['tableData/cities']);
       return this.$store.getters['tableData/cities']
     }
   },
-  // mounted() {
-  //   this.$store.dispatch('tableData/getData').then(() => {
-  //     this.loading = false
-  //   })
-  // },
+  mounted() {
+    this.$store.dispatch('tableData/getData').then(() => {
+      this.loading = false
+    })
+  },
   methods: {
     changeData: function (timeNum) {
       let day = String(timeNum.getData())
@@ -122,17 +102,15 @@ export default {
       console.log('Заходит')
       this.loading = true
       this.$store.dispatch('tableData/getData', this.value).then(() => {
-        console.log('12413414')
-        this.loading = false
-      })
-      this.$store.dispatch('tableData/getCities', query).then(() => {
-        console.log(query)
+        console.log(2, 'query' + query)
         this.loading = false
       })
     },
 
     handleInput: function (query) {
-      return query
+      this.$store.dispatch('tableData/getCities', query).then(() => {
+        this.loading = false
+      })
     }
   }
 }
