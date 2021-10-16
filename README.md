@@ -1,4 +1,4 @@
-/* инструменты: Vue, Vuex, linter prettier etc, babel, axios, element-UI, gh-pages */
+/* инструменты: Vue, Vuex, linter prettier etc, axios, element-UI, gh-pages */
 # weather-page
 This application shows the weather in the selected city. Implemented with Vue 2, VueCLI, VueX, axios, openWeather api, node.js, express & npm.
 
