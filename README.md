@@ -1,8 +1,5 @@
-/* технологии: Vue, Vuex, linter prettier etc, axios, element-UI, gh-pages */
 # weather-page
-This application shows the weather in the selected city. Implemented with Vue 2, VueCLI, VueX, axios, openWeather api, node.js, express & npm.
-
-Данное приложение показывает погоду в выбранном городе. Реализовано с помощью Vue  2, VueCLI , VueX, axios,api openWeather, node.js, express  & npm.
+This application shows the weather in the selected city. Implemented with Vue 2, VueCLI, VueX, axios, openWeather api, node.js, express & npm, element-UI, gh-pages, linter, prettier etc.
 
 The server should be started before starting the application.
 Перед запуском приложения следует запустить сервер.
@@ -12,6 +9,12 @@ To run, you need to get the code through Git clone, or download the archive and 
 1) npm install - to install all modules.
 2) npm run serve - to run the server.
 After assembling the modules, the link localhost:8080 will appear. Clicking on it will open this application in the default browser.
+
+# weather-page
+Данное приложение показывает погоду в выбранном городе. Реализовано с помощьюVue 2, VueCLI, VueX, axios, openWeather api, node.js, express & npm, element-UI, gh-pages, linter, prettier и т.д.
+
+Перед запуском приложения следует запустить сервер.
+https://github.com/Ffullex/CtiyWeatherForecast-server
 
 Для запуска необходимо получить код через Git clone, либо скачать архив и разархивировать. После чего открыть папку с проектом через IDE (рекомендую WebStorm). В консоли (teminal ) следует прописать команды:
 1) npm  install - чтобы установить все модули.
